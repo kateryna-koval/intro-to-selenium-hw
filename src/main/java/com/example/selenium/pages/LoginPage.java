@@ -1,27 +1,30 @@
 package com.example.selenium.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    // TODO define username, password, and login WebElements using @FindBy
+    private final By username = By.id("username");
+    private final By password = By.id("password");
+    private final By login = By.cssSelector(".fa");
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     public LoginPage setUsername(String text) {
-        // TODO set username
+        driver.findElement(username).sendKeys(text);
         return this;
     }
 
     public LoginPage setPassword(String text) {
-        // TODO set password
+        driver.findElement(password).sendKeys(text);
         return this;
     }
 
     public MainPage clickLogin() {
-        // TODO click logout return instance of MainPage
-        return null;
+        driver.findElement(login).click();
+        return new MainPage(driver);
     }
 }
